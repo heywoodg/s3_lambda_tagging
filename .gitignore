@@ -1,0 +1,8 @@
+terraform.tfstate.backup
+terraform.tfstate
+.terraform/providers/registry.terraform.io/hashicorp/archive/2.2.0/windows_amd64/terraform-provider-archive_v2.2.0_x5.exe
+.terraform/providers/registry.terraform.io/hashicorp/aws/3.63.0/windows_amd64/terraform-provider-aws_v3.63.0_x5.exe
+.terraform/providers/registry.terraform.io/hashicorp/random/3.1.0/windows_amd64/terraform-provider-random_v3.1.0_x5.exe
+.vscode/settings.json
+myzip/python.zip
+.terraform.lock.hcl
