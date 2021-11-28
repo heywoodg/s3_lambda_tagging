@@ -40,7 +40,7 @@ resource "aws_s3_bucket" "bucket" {
 
 # Create the IAM service role for the lambda function
 resource "aws_iam_role" "s3_lambda_role" {
-  name               = "s3_lambda_function_role"
+  name               = "s3_tag_lambda_function_role"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -58,7 +58,6 @@ EOF
 }
 
 # IAM policy for logging from a lambda
-
 resource "aws_iam_policy" "lambda_logging" {
   name        = "LambdaLoggingPolicy"
   path        = "/"
@@ -80,7 +79,7 @@ resource "aws_iam_policy" "lambda_logging" {
             "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": "s3:PutObjectTagging",
-            "Resource": "arn:aws:s3:::*/*"
+            "Resource": "${aws_s3_bucket.bucket.arn}/*"
         },
         {
             "Action": [
@@ -92,7 +91,7 @@ resource "aws_iam_policy" "lambda_logging" {
                 "logs:CreateLogStream",
                 "logs:PutLogEvents"
             ],
-            "Resource": "arn:aws:sqs:*",
+            "Resource": "${aws_sqs_queue.sqs_queue.arn}",
             "Effect": "Allow"
         }
     ]
